@@ -5,7 +5,7 @@ const ErrorHandler = require("./utils/errorHandler");
 require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
-
+require("./config/database").connect();
 //middleware for CORS
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -39,15 +39,3 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-//database connection
-mongoose.connect(
-  process.env.MONGODB_URI,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err, client) => {
-    if (err) return console.log(err);
-    console.log(`connected to db`);
-  }
-);
