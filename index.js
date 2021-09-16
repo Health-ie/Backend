@@ -23,9 +23,9 @@ app.use("/doctor", require("./routes/doctor.routes"));
 app.use("/patient", require("./routes/patient.routes"));
 
 //custom error handler
-app.all("*", (req, res, next) => {
-  throw new ErrorHandler(`URL not ${req.url} found!`, 404);
-});
+// app.all("*", (req, res, next) => {
+//   throw new ErrorHandler(`URL not ${req.url} found!`, 404);
+// });
 
 //error handling middleware
 app.use((err, req, res, next) => {
