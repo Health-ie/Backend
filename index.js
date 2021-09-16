@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 
 //doctor routes
 app.use("/doctor", require("./routes/doctor.routes"));
-
+app.get("/",(req,res)=>res.send("hello"))
 //hospital routes
 app.use("/patient", require("./routes/patient.routes"));
 
