@@ -1,9 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
-//
 const ErrorHandler = require("./utils/errorHandler");
 require("dotenv").config();
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
 const port = process.env.PORT || 5000;
 require("./config/database").connect();
 //middleware for CORS
@@ -17,7 +20,7 @@ app.use((req, res, next) => {
 app.use("/doctor", require("./routes/doctor.routes"));
 
 //hospital routes
-app.use("/hospital", require("./routes/hospital.routes"));
+app.use("/patient", require("./routes/patient.routes"));
 
 //custom error handler
 app.all("*", (req, res, next) => {

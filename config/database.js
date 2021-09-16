@@ -7,6 +7,7 @@ exports.connect = () => {
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex:true
     },
     (err, client) => {
       if (err) return console.log(err);

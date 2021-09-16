@@ -1,8 +1,9 @@
 const express = require("express");
-const { hello } = require("../controllers/doctor.controller");
+const { login, register, logout } = require("../controllers/doctor/auth.controller");
+const { hello } = require("../controllers/doctor/doctor.controller");
 const router = express.Router();
 router.get("/", hello);
-router.get("/vaibhav",(req,res)=>{
-    res.send("doctor vaibhav")
-})
+router.post("/login",login)
+router.post("/register",register)
+router.get("/logout",logout)
 module.exports = router;
