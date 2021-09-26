@@ -13,7 +13,7 @@ exports.login = async (req, res) => {
     }
     const patient = await Patient.findOne({ email });
     if (patient && (await bcrypt.compare(password, patient.password))) {
-      const token = jwt.sign({ user_id: patient._id, email }, process.env.TOKEN_KEY, {
+      const token = jwt.sign({ user_id: patient._id, email }, process.env.PATIENT_TOKEN_KEY, {
         expiresIn: "2h",
       });
       patient.token = token;
@@ -60,7 +60,7 @@ exports.register = async (req, res) => {
       email: email.toLowerCase(),
       password: encryptedPassword,
     });
-    const token = jwt.sign({ user_id: patient._id, email }, process.env.TOKEN_KEY, {
+    const token = jwt.sign({ user_id: patient._id, email }, process.env.PATIENT_TOKEN_KEY, {
       expiresIn: "2h",
     });
     patient.token = token;

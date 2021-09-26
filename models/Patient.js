@@ -18,13 +18,18 @@ const patientSchema = new mongoose.Schema({
     unique: true,
   },
   password: {
-    type: String
+    type: String,
   },
   token: {
     type: String,
     trim: true,
   },
+  birthdate: {
+    type: Date,
+    trim: true,
+  },
   salt: String,
+
 //   role: {
 //     type: Number,
 //     default: 0,

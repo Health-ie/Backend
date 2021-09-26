@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const doctorSchema = new mongoose.Schema({
   first_name: {
     type: String,
     require: true,
@@ -11,15 +11,21 @@ const userSchema = new mongoose.Schema({
     require: true,
     trim: true,
   },
-  userInfo: {
-    type: String,
-    trim: true,
-  },
   email: {
     type: String,
     require: true,
     trim: true,
     unique: true,
+  },
+  qualification: {
+    type: [String],
+  },
+  specialization: {
+    type: [String],
+  },
+  start_date:{
+    type: Date,
+    trim: true,
   },
   password: {
     type: String,
@@ -28,17 +34,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  birthdate: {
+    type: Date,
+    trim: true,
+  },
   salt: String,
-  role: {
-    type: Number,
-    default: 0,
-  },
-  appointments: {
-    type: Array,
-    default: [],
-  },
-  // qualification: { type: String },
-  // experience: [{ domain: String, years: Number }],
 });
-
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Doctor", doctorSchema);
