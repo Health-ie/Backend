@@ -21,3 +21,8 @@ exports.bookAppointment = async (req, res) => {
     res.send(app);
   });
 };
+exports.myAppointments = (req,res) => {
+  Appointment.find({ patient_id: req.body.id })
+    .then((data) => res.send(data))
+    .catch((err) => console.log(err));
+};

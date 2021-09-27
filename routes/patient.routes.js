@@ -1,5 +1,5 @@
 const express = require("express");
-const { hello, bookAppointment } = require("../controllers/patient/patient.controller");
+const { hello, bookAppointment, myAppointments } = require("../controllers/patient/patient.controller");
 const { login, register, logout } = require("../controllers/patient/auth.controller");
 const pauth = require("../middleware/pauth");
 const { doctorList } = require("../controllers/patient/patient.controller");
@@ -12,5 +12,6 @@ router.post("/private", pauth, (req, res) => {
 });
 router.get("/doctorlist",pauth,doctorList);
 router.post("/book",pauth,bookAppointment);
+router.post("/myappointments",pauth,myAppointments)
 router.get("/logout", logout);
 module.exports = router;
