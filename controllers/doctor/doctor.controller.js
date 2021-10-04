@@ -35,3 +35,12 @@ exports.updateProfile = (req, res) => {
     }
   });
 };
+exports.done = (req,res) => {
+  Appointment.findByIdAndUpdate(req.body.appointment_id, {status:true}, function (err, docs) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(docs);
+    }
+  });
+}
