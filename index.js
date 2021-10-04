@@ -16,7 +16,6 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Authorization,x-access-token");
   next();
 });
-
 //doctor routes
 app.use("/doctor", require("./routes/doctor.routes"));
 app.get("/",(req,res)=>res.send("hello"))

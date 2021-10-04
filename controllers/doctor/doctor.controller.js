@@ -21,8 +21,17 @@ exports.allAppointments = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
-exports.myAppointments = (req,res) => {
+exports.myAppointments = (req, res) => {
   Appointment.find({ doctor_id: req.body.id })
     .then((data) => res.send(data))
     .catch((err) => console.log(err));
+};
+exports.updateProfile = (req, res) => {
+  Doctor.findByIdAndUpdate(req.body.doctor_id, req.body.data, function (err, docs) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(docs);
+    }
+  });
 };
