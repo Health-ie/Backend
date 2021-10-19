@@ -21,9 +21,9 @@ const doctorSchema = new mongoose.Schema({
     type: [String],
   },
   specialization: {
-    type: [String],
+    type: String,
   },
-  start_date:{
+  start_date: {
     type: Date,
     trim: true,
   },
@@ -34,10 +34,25 @@ const doctorSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  experience: {
+    type: String,
+    // require: true,
+    trim: true,
+  },
   birthdate: {
     type: Date,
     trim: true,
   },
+  contact: {
+    type: String,
+    // require: true,
+    trim: true,
+  },
+  about: {
+    type: String,
+    // require: true,
+    trim: true,
+  },
   salt: String,
 });
-module.exports = mongoose.model("Doctor", doctorSchema);
+module.exports = mongoose.model("Doctor", doctorSchema)
