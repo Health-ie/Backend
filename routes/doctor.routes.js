@@ -10,8 +10,8 @@ router.get("/logout",logout)
 router.post("/private", dauth, (req, res) => {
     res.status(200).send("Welcome 🙌 ");
   });
-router.get("/allappointments",dauth,allAppointments)
+router.get("/allappointments",allAppointments)
 router.post("/updateprofile",dauth,updateProfile)
-router.post("/myappointments",dauth,myAppointments)
+router.post("/myappointments",myAppointments)
 router.post("/done",done)
 module.exports = router;
