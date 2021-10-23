@@ -13,9 +13,13 @@ exports.login = async (req, res) => {
     }
     const doctor = await Doctor.findOne({ email });
     if (doctor && (await bcrypt.compare(password, doctor.password))) {
-      const token = jwt.sign({ user_id: doctor._id, email }, process.env.DOCTOR_TOKEN_KEY, {
-        expiresIn: "2h",
-      });
+      const token = jwt.sign(
+        { user_id: doctor._id, email },
+        process.env.DOCTOR_TOKEN_KEY,
+        {
+          expiresIn: "2h",
+        }
+      );
       doctor.token = token;
       res.status(200).json({
         success: true,
@@ -39,7 +43,15 @@ exports.logout = (req, res) => {
 exports.register = async (req, res) => {
   // console.log(req.body)
   try {
-    const { first_name, last_name, email, password } = req.body;
+    const {
+      first_name,
+      last_name,
+      email,
+      password,
+      about,
+      experience,
+      specialization,
+    } = req.body;
     if (!(email && password && first_name && last_name)) {
       res.status(400).json({
         success: false,
@@ -59,10 +71,17 @@ exports.register = async (req, res) => {
       last_name,
       email: email.toLowerCase(),
       password: encryptedPassword,
+      about,
+      specialization,
+      experience,
     });
-    const token = jwt.sign({ user_id: doctor._id, email }, process.env.DOCTOR_TOKEN_KEY, {
-      expiresIn: "2h",
-    });
+    const token = jwt.sign(
+      { user_id: doctor._id, email },
+      process.env.DOCTOR_TOKEN_KEY,
+      {
+        expiresIn: "2h",
+      }
+    );
     doctor.token = token;
     res.status(201).json({
       success: true,
